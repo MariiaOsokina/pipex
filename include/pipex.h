@@ -6,7 +6,7 @@
 /*   By: mosokina <mosokina@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 19:43:49 by mosokina          #+#    #+#             */
-/*   Updated: 2024/09/01 21:13:05 by mosokina         ###   ########.fr       */
+/*   Updated: 2024/09/05 13:52:27 by mosokina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 void	parent_process(char **argv, char **envp, int *endfd);
 void	child_process(char **argv, char **envp, int *endfd);
 void	execute(char *argv_cmd, char **envp);
-char	*find_path(char *cmd, char **envp);
+// char	*find_path(char *cmd, char **envp);
 void	error(void);
 
 #endif
