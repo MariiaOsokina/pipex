@@ -1,31 +1,29 @@
-MANE	= pipex
-CC 		= cc
-CFLAGS 	= -Wall -Wextra -Werror
+NAME	= pipex
+
 SRC_PATH = src/
 OBJ_PATH = obj/
-
 SRC 	= pipex.c utils.c
 SRCS	= $(addprefix $(SRC_PATH), $(SRC))
 OBJ 	= $(SRC:.c=.o)
 OBJS	= $(addprefix $(OBJ_PATH), $(OBJ))
 
-all: 		$(OBJ_PATH) $(NAME)
+CC 		= cc
+CFLAGS 	= -Wall -Wextra -Werror
+HEADER = -I include
 
-# .c.o:
-# 	${CC} -c $< -o $(<:.c=.o)
-$(OBJ_PATH):
-	@mkdir $(OBJ_PATH)
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	@make re -C ./libft
+	@$(CC) $(OBJS) -L ./libft -lft -o $(NAME)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@mkdir -p $(OBJ_PATH)
+	@$(CC) $(CFLAGS) $(HEADER) -c $< -o $@
 	
-$(NAME):	$(OBJS)
-		@make re -C ./libft
-		@$(CC) $(CFLAGS) $(OBJS) -L ./libft -lft -o $(NAME)
-
 clean:
 		@make clean -C ./libft
-		@rm -f $(OBJS)
+		@rm -rf $(OBJ_PATH)
 
 fclean: 	clean
 		@make fclean -C ./libft
