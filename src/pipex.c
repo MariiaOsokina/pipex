@@ -6,7 +6,7 @@
 /*   By: mosokina <mosokina@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 13:22:06 by mosokina          #+#    #+#             */
-/*   Updated: 2024/09/06 20:10:29 by mosokina         ###   ########.fr       */
+/*   Updated: 2024/09/08 17:42:00 by mosokina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ int	main(int argc, char *argv[], char *envp[])
 			child_process(argv, envp, endfd);
 		waitpid(pid1, &status, 0);
 		parent_process(argv, envp, endfd);
-		close(endfd[1]);
-		close(endfd[0]);
+		// close(endfd[1]);
+		// close(endfd[0]);
 	}
 	else
 	{
@@ -58,7 +58,7 @@ int	main(int argc, char *argv[], char *envp[])
 void	error(void)
 {
 	perror("\033[31mError");
-	exit(1);
+	exit(EXIT_FAILURE);
 }
 
 /*child process:

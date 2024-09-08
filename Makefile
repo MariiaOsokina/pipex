@@ -14,20 +14,20 @@ HEADER = -I include
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@make re -C ./libft
-	@$(CC) $(OBJS) -L ./libft -lft -o $(NAME)
+	make -C ./libft
+	$(CC) $(OBJS) -L ./libft -lft -o $(NAME)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
-	@mkdir -p $(OBJ_PATH)
-	@$(CC) $(CFLAGS) $(HEADER) -c $< -o $@
-	
-clean:
-		@make clean -C ./libft
-		@rm -rf $(OBJ_PATH)
+	mkdir -p $(OBJ_PATH)
+	$(CC) $(CFLAGS) $(HEADER) -c $< -o $@
 
-fclean: 	clean
-		@make fclean -C ./libft
-		@rm -f $(NAME)
+clean:
+		make clean -C ./libft
+		rm -rf $(OBJ_PATH)
+
+fclean: clean
+		make fclean -C ./libft
+		rm -f $(NAME)
 
 re:			fclean all
 
