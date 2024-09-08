@@ -6,7 +6,7 @@
 /*   By: mosokina <mosokina@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 19:26:02 by mosokina          #+#    #+#             */
-/*   Updated: 2024/09/08 18:00:44 by mosokina         ###   ########.fr       */
+/*   Updated: 2024/09/08 20:34:04 by mosokina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,10 @@ void	free_str_arr(char **paths_arr)
 		i ++;
 	}
 	free(paths_arr);
+}
+
+void	error(void)
+{
+	perror("\033[31mError");
+	exit(EXIT_FAILURE);
 }
